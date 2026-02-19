@@ -181,7 +181,7 @@ My proposal: __Go for ZERO Bugs.__
 ### Measure
 - How long is your bug list over time ?
 - It the length of your bug list increasing or decreasing ?
-- Kategorize Bugs by the identified causes.
+- Categorize Bugs by the identified causes.
 
 ## Reusability
 ### Rationale
