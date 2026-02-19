@@ -3,46 +3,7 @@
 # Software Maintainability Cheatsheet
 ![overview](build/overview.jpg)
 
-
-# Table of Contents
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
-
-<!-- code_chunk_output -->
-
-- [Software Maintainability Cheatsheet](#software-maintainability-cheatsheet)
-- [Table of Contents](#table-of-contents)
-- [Software](#software)
-  - [Shipping Software](#shipping-software)
-  - [Software Assets](#software-assets)
-  - [Test Software](#test-software)
-  - [Playground Software](#playground-software)
-- [Quality](#quality)
-  - [Maintainability](#maintainability)
-    - [Rationale](#rationale)
-    - [Measurement](#measurement)
-  - [Testability](#testability)
-    - [Rationale](#rationale-1)
-    - [Measure](#measure)
-  - [Readability](#readability)
-    - [Rationale](#rationale-2)
-    - [Measure](#measure-1)
-  - [Usability](#usability)
-    - [Rationale](#rationale-3)
-    - [Measure](#measure-2)
-  - [Reliability](#reliability)
-    - [Rationale](#rationale-4)
-    - [Measure](#measure-3)
-  - [Reusability](#reusability)
-    - [Rationale](#rationale-5)
-    - [Measure](#measure-4)
-- [Foundation](#foundation)
-  - [The Joel Test](#the-joel-test)
-  - [Twenty-Five Most Common Mistakes with Real-Time Software Development](#twenty-five-most-common-mistakes-with-real-time-software-development)
-  - [List of Code Smells](#list-of-code-smells)
-
-<!-- /code_chunk_output -->
-
-
+<p style="page-break-after: always;"></p>
 
 # Software
 
@@ -53,12 +14,12 @@ Keeping maintainability and feature production are two different
 aspects of the development activity.
  
 ## Software Assets
-__Any of your libraries, framworks or whatever software that is reusable, reduce R&D cost.__
+_Any of your libraries, framworks or whatever software that is reusable, reduce R&D cost._
 Removed software is removed money.
 
 ## Test Software
 - The amount of test software is proportional to test automation.
-- __Test automation reduce R&D cost__
+- _Test automation reduce R&D cost_
 - There are many free nice tools available
   for example gtest or catch2 for c++, robot framework for integration testing,
   AHK2 for gui test automation, ...
@@ -68,8 +29,12 @@ Removed software is removed money.
 - Creeativity is driven by experiments
 - Experimental software is the least organized
 
+<p style="page-break-after: always;"></p>
+
 # Quality
 Measuring quality is the basis of understanding the role of R&D in regard to that and helps to understand the order of importance to launch the right programs for quality improvement.
+
+Furthermore, the quality points mentioned here all depend on eacht other.
 
 ## Maintainability
 
@@ -84,7 +49,14 @@ But there are barriers:
   be as in Clean Code "The boy scout rule" as something that happens
   "naturally" all the time. Even variable renaming get's rejected.
 
-__Keeping refactoring up reduce R&D cost.__
+_Keeping refactoring up reduce R&D cost._
+
+#### Runtime Architecture
+If you use C++ and cmake, you have two big areas to care about: The structure of your source code, like what classes do you have and so on. Let's call this your __runtime architecture__.
+
+#### Tooling Architecture
+The organisation of your files, folders, libraries and so on, in your repository, is another kind of architecture, let's call it __tooling architecture__. 
+Both need maintainance, especially for cmake, and if you have many buld options and different target plattforms. This part is maybe much easier if you program in rust, but you have it anyway. Even if you go for something like Cube Ide, which offers you something by making a lot of it automatic. But you still have to manually fiddle a lot of details, like include paths, and so on.
 
 ### Measurement
 Compare the logic complexity of a feature to the amount of work it needs to implement it:
@@ -101,7 +73,9 @@ Implementation complexity:
 - How much additional work has to be done, e.g. documentation is extra 
     (confluence vs. doxygen)
 
-__Keeping complexity low reduce R&D cost.__
+_Keeping complexity low reduce R&D cost._
+
+<p style="page-break-after: always;"></p>
 
 ## Testability
 ### Rationale
@@ -118,16 +92,12 @@ Test software can provide extra added Value:
 - Makes refactoring more safe.
 - Safeguards our Business.
 
-__Quality standard and added value of test software reduce R&D cost.__
+_Quality standard and added value of test software reduce R&D cost._
 
 ### Measure
 - How much do you cover with tests ?
 - How much of your tests are automated ?
 - How about the Maintainability, Usability, Reliability, 
-
-
-
-
 
 ## Readability
 
@@ -187,19 +157,19 @@ My proposal: __Go for ZERO Bugs.__
 ### Rationale
 If you can re-use a piece of software that cuts the R&D cost in half ( ok, exaggerated, but you get the point ).
 
-Following all the principles to keep the quality high increases the reusability.
-
-__Reusability reduce your R&D cost.__
+_Reusability reduce your R&D cost._
 
 ### Measure
 - How many times is your library/framework/module/... used ?
 - How many times do you make a "new generation", starting from scratch ?
 
+<p style="page-break-after: always;"></p>
+
 # Foundation
 
 A lot of work has been done by others in the attempt to solve that very fundamental problem of software maintainability. A lot of it is freely available these days. Some things are overcomplicated and/or questionable, e.g. "Maintainability Index". But generally rejecting this means you must invent the wheel again.
 
-__Applying literature about software maintainability reduces your R&D cost.__
+_Applying literature about software maintainability reduces your R&D cost._
 
 I like to offer Three examples here. This is based on my personal experience:
 Whenever i witnessed the downfall of software development, it was not primarily due to the lag of professionalism. I  have seen supersmart software engineers, using all the tools and methods I can think of, and yet fail to keep up the procuctivity in the software department.
@@ -216,7 +186,8 @@ It is the emergency life support for your failing codebase.
 It may hit hard, but it is as effective as it is hitting hard.
 
 
-## Twenty-Five Most Common Mistakes with Real-Time Software Development
+## TOP 25
+Dave B. Stewart: Twenty-Five Most Common Mistakes with Real-Time Software Development
 
 This often copied and adapted list is an early source of the idea of working with a checklist
 to get everything covered.
@@ -229,7 +200,7 @@ It is specifically for real time systems, so this is for the embedded systems an
 Use another more suitable list of common mistakes as neccessary.
 
 ## List of Code Smells
-[List of Code Smells](https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29) )←This is an adopted list, the orignal can be foud in the book Clean Code of Robert C. Martin.
+[List of Code Smells](https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29) )←This is an adopted list, the orignal can be foud in the book Clean Code by Robert C. Martin.
 
 This was just the beginning of me starting to understand that there is more on making good software than
 my then hobby approach of constant improving by trial and error.
@@ -238,4 +209,30 @@ This list is long, apparently questionable, controversal and maybe outdated. Man
 
 I think is has several very sharp insights.
 
+<p style="page-break-after: always;"></p>
 
+# Table of Contents
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=2 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Software Maintainability Cheatsheet](#software-maintainability-cheatsheet)
+- [Software](#software)
+  - [Shipping Software](#shipping-software)
+  - [Software Assets](#software-assets)
+  - [Test Software](#test-software)
+  - [Playground Software](#playground-software)
+- [Quality](#quality)
+  - [Maintainability](#maintainability)
+  - [Testability](#testability)
+  - [Readability](#readability)
+  - [Usability](#usability)
+  - [Reliability](#reliability)
+  - [Reusability](#reusability)
+- [Foundation](#foundation)
+  - [The Joel Test](#the-joel-test)
+  - [TOP 25](#top-25)
+  - [List of Code Smells](#list-of-code-smells)
+- [Table of Contents](#table-of-contents)
+
+<!-- /code_chunk_output -->
