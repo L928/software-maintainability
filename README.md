@@ -229,7 +229,7 @@ It is specifically for real time systems, so this is for the embedded systems an
 Use another more suitable list of common mistakes as neccessary.
 
 ## List of Code Smells
-[List of Code Smells](https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29)
+[List of Code Smells](https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29) )←This is an adopted list, the orignal can be foud in the book Clean Code of Robert C. Martin.
 
 This was just the beginning of me starting to understand that there is more on making good software than
 my then hobby approach of constant improving by trial and error.
