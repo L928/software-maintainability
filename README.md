@@ -9,12 +9,12 @@ _An incomplete yet solid starting point to organize the endeavour to get it righ
 
 # Software
 Here is a brief overview of software for different purposes.
-There is the observation that certain software, for example, test
-software, are not considered to be valuable, and therefore not being
-treated with the quality measures that is employed for the shipping
+It has been observed that certain software, for example, test
+software, is not considered to be valuable, and therefore not being
+treated with the quality measures that are employed for the shipping
 software. This is one main reason why software becomes less maintainable.
 That's why I recommend to treat any software with the same "craftsmanship",
-which is by the way unfortunately a term that is pretty much subject to
+which, unfortunately, is a term that is pretty much subject to
 interpretation.
 
 ## Shipping Software
@@ -49,7 +49,7 @@ lose many benefits of test software: It can be a solid documentation source, it
 can drive a good architecture with testability in mind, and much more.
 
 ## Playground Software
-Programmers program sometimes things to make experiments, test something, and
+Programmers sometimes write code to make experiments, test something, and
 try new ideas, or make some debug helpers. This is usually the software which
 is the least organized. Worse than unit tests. But it has value. 
 It carries ideas, information, data, that might be valuable in the future,
@@ -66,12 +66,12 @@ improvement. I have witnessed the use of many tools and policy, but the
 failure of projects were still almost always present. It must be evaluated
 if those tools and policy actually improving the quality. This is apparently
 often not the case.
-I identify 6 quality categories here, which needs each a different treatment. 
+I identify 6 quality categories here, which need each a different treatment. 
 And, the quality of any category depends on the quality of each other category.
 That's why the dependency lines in the diagram are from each category to any
 other category.
-For each of these categories i give a rationale about it, why it is there 
-why it is important, and how to get it right, and what are the consequence of
+For each of these categories I give a rationale about it, why it is there, 
+why it is important, and how to get it right, and what are the consequences of
 not getting it right. I also briefly discuss the measurement of each
 quality category.
 
@@ -84,7 +84,7 @@ So this is something measured. And it is really bad to have software that can't 
 maintained ( fix bugs, program new features, clean it up).
 
 #### Refactoring
-There is this activity called "Refactoring" That strange word simply means you
+There is this activity called "Refactoring". That strange word simply means you
 change the software, but the behaviour should _not_ change at all.
 You do it to make the software more maintainable.
 
@@ -94,7 +94,7 @@ You need high test depth and coverage to make that safe.
 
 Two terrible problems here:
 
-1) If management drop refactoring, abandoning it as "technical debt", that
+1) If management drops refactoring, abandoning it as "technical debt", that
 disempowers developers. It makes sense as manager to do so, since otherwise
 the project economy doesn't work. It is understandable.
 The problem _behind_ this disempowerment is the decline of trust, because
@@ -121,7 +121,7 @@ This is a walk on a tight rope.
 If you use for instance C++ and cmake, you have two big areas to care about: The structure of your function calls, classes, dependencies, and so on. What the software _is doing_. Let's call this your __runtime architecture__. Here, for example, a huge violation in the Dave B. Stewart ( we come to that later )  identified typical error "one big loop".
 
 #### Tooling Architecture
-The organisation of your files, folders, libraries and so on, in your repository, is another kind of architecture, which has not so much to do with what the software _is doing_. It is the organisation of the file system, basically. But that's a strong simplification. let's call it __tooling architecture__. 
+The organisation of your files, folders, libraries and so on, in your repository, is another kind of architecture, which has not so much to do with what the software _is doing_. It is the organisation of the file system, basically. But that's a strong simplification. Let's call it __tooling architecture__. 
 
 Both runtime architecture as well as tooling architecture need maintenance and have quality, or the absence thereof. Especially for cmake, if you have many build options and different target platforms and many libraries and different ways to bind them, it can become pretty messy. This part is maybe much easier if you program in rust, or use an ide which handles it for you, or you use QT for example and don't need anything else. But you still have to manually fiddle at least some details, like include paths management, and so on.
 
@@ -153,8 +153,8 @@ Test software should adhere to the same principles as shipped software.
 Don't orphanize it, don't treat it as second class software ( i.e. lowering
 standards here ).
 
-Test software can provide extra added Value:
-- Force developer to think about the user experience of his software.
+Test software can provide added value:
+- Force developer to think about the user experience of their software.
 - Give solid documentation by example.
 - Makes refactoring more safe.
 - Safeguards our Business.
@@ -166,7 +166,7 @@ The more test automation you have, the better. Any manual test is subject to hum
 and is expensive, and can't be repeated easily. Manual testing is way more expensive than
 automated testing. A test that can't be run is a test that is ... not there ... somehow.
 
-But regarding the details of "how and when to test", it gets controversial. we have the
+But regarding the details of "how and when to test", it gets controversial. We have the
 extreme "Three rules of TDD", and "Each test should test only one thing". And one
 phenomenon I find particularly questionable, is stating "we need 80% coverage".
 I personally think it is much better to go for 100% coverage, no matter how.
@@ -182,14 +182,14 @@ with a refactoring.
 
 ## Usability
 ### Rationale
-The usability goes down when the management decide to drop features,
-due to being behind schedule. And that is either mismanagement ( wrong
-time estimation ) or the downward spirals of the other quality areas.
+The usability goes down when the management decides to drop features,
+due to being behind schedule. And that is either mismanagement (wrong
+time estimation) or the downward spirals of the other quality areas.
 This is how usability depends on the other quality areas.
 
 #### Customer
-If the customer can use it efficiently, that makes him happy.
-This is prone to be different to what _you_ might think is usable.
+If the customer can use it efficiently, that makes them happy.
+This is prone to be different from what _you_ might think is usable.
 Usability is what your customer _pays_ for.
 
 ### Measure
@@ -216,7 +216,7 @@ that good naming is helpful.
 
 #### Code Review
 To keep it simple, code reviews should be used to at least have a second opinion
-on that. It is to trick the "blind spot" everyone has towards the own failure.
+on that. It helps overcome the "blind spot" everyone has toward their own failures.
 
 To make software readable, you must perform code reviews. Only another person can tell if your software is readable, because your blind spot is that "you understand it", no matter what you write.
 
@@ -239,7 +239,7 @@ But this should never be an act of criticism. IBM once stated, that for code rev
 Unpredictable errors usually stem from overcomplexity.
 
 Unreliable software drives away your customer and
-risks damage to live, environment and business.
+risks damage to life, environment and business.
 One single tiny error at the wrong time in the wrong
 place can be devastating.
 
@@ -257,12 +257,12 @@ My proposal: __Go for ZERO Bugs.__
 #### Methodology
 
 Testing Code Reviews, CI/CD QA, MISRA, SonarQube, SCRUM, safety concepts, and so on,
-are tools to get the software free of bugs and behave reliable.
+are tools to get the software free of bugs and behave reliably.
 
-A  problem is, that those tools can't guarantee that your software is reliable. They might make
-it worse (  e.g. SonarQube false positives ).
+A problem is that those tools can't guarantee that your software is reliable. They might make
+it worse (e.g. SonarQube false positives).
 
-This is how your methodology influence reliability.
+This is how your methodology influences reliability.
 
 ### Measure
 - How long is your bug list over time ?
@@ -276,7 +276,7 @@ If you can re-use a piece of software that cuts the R&D cost in half ( ok, exagg
 Reusability reduces your R&D cost.
 
 #### Architecture
-Besides all the other quality points that influence the Reusability, the architecture is particularly a point. For example, if you have everything in a library, that might be transported to another project. If you have, on the other hand, everything code inside your functions, it is more difficult to extract. For example, you may have a collection of helpers, mathematical functions, whatever.
+Besides all the other quality points that influence the Reusability, the architecture is particularly a point. For example, if you have everything in a library, that might be transported to another project. If you have, on the other hand, all code inside your functions, it is more difficult to extract. For example, you may have a collection of helpers, mathematical functions, whatever.
 
 ### Measure
 - How many times is your library/framework/module/... used ?
