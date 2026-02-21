@@ -1,9 +1,31 @@
+<h1> Software Maintainability Cheatsheet </h1>
 
-
-# Software Maintainability Cheatsheet
 _An incomplete, not carved in stone, yet solid starting point to organize the endeavour to get it right._
 
 ![overview](build/overview.jpg)
+
+<p style="page-break-after: always;"></p>
+
+<h1> Table of Contents </h1>
+
+- [Software](#software)
+  - [Shipping Software](#shipping-software)
+  - [Software Assets](#software-assets)
+  - [Test Software](#test-software)
+  - [Playground Software](#playground-software)
+- [Quality](#quality)
+  - [Maintainability](#maintainability)
+  - [Testability](#testability)
+  - [Usability](#usability)
+  - [Readability](#readability)
+  - [Reliability](#reliability)
+  - [Reusability](#reusability)
+- [Foundation](#foundation)
+  - [The Joel Test](#the-joel-test)
+  - [TOP 25](#top-25)
+  - [List of Code Smells](#list-of-code-smells)
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 <p style="page-break-after: always;"></p>
 
@@ -55,10 +77,6 @@ is the least organized. Worse than unit tests. But it has value.
 It carries ideas, information, data, that might be valuable in the future,
 or might be needed again later.
 
-
-
-<p style="page-break-after: always;"></p>
-
 # Quality
 Measuring quality is the basis for understanding the order of importance
 and to launch the right programs and have the suitable policy for quality
@@ -74,6 +92,8 @@ For each of these categories I give a rationale about it, why it is there,
 why it is important, and how to get it right, and what are the consequences of
 not getting it right. I also briefly discuss the measurement of each
 quality category.
+
+<p style="page-break-after: always;"></p>
 
 ## Maintainability
 
@@ -125,6 +145,8 @@ The organisation of your files, folders, libraries and so on, in your repository
 
 Both runtime architecture as well as tooling architecture need maintenance and have quality, or the absence thereof. Especially for cmake, if you have many build options and different target platforms and many libraries and different ways to bind them, it can become pretty messy. This part is maybe much easier if you program in rust, or use an ide which handles it for you, or you use QT for example and don't need anything else. But you still have to manually fiddle at least some details, like include paths management, and so on.
 
+<p style="page-break-after: always;"></p>
+
 ### Measure
 Compare the logic complexity of a feature to the amount of work it needs to implement it:
 
@@ -141,8 +163,6 @@ Implementation complexity:
     (e.g. confluence vs. doxygen)
 
 Keeping complexity low reduces R&D cost.
-
-<p style="page-break-after: always;"></p>
 
 ## Testability
 ### Rationale
@@ -175,9 +195,10 @@ I personally think it is much better to go for 100% coverage, no matter how. The
 - How much do you cover with tests ?
 - How much of your tests are automated ? 
 
-
+<p style="page-break-after: always;"></p>
 
 ## Usability
+
 ### Rationale
 The usability goes down when the management decides to drop features,
 due to being behind schedule. And that is either mismanagement (wrong
@@ -230,6 +251,8 @@ But this should never be an act of criticism. IBM once stated, that for code rev
 - Do you get lost ?
 - ...
 
+<p style="page-break-after: always;"></p>
+
 ## Reliability
 
 ### Rationale
@@ -239,7 +262,6 @@ Unreliable software drives away your customer and
 risks damage to life, environment and business.
 One single tiny error at the wrong time in the wrong
 place can be devastating.
-
 
 __Bugs destroy your business.__
 
@@ -278,8 +300,6 @@ Besides all the other quality points that influence the Reusability, the archite
 ### Measure
 - How many times is your library/framework/module/... used ?
 - How many times do you make a "new generation", starting from scratch ?
-
-<p style="page-break-after: always;"></p>
 
 # Foundation
 
@@ -324,31 +344,3 @@ my then hobby approach of constant improving by trial and error.
 This list is long, apparently questionable, controversial and maybe outdated. Many altered copies exist.
 
 I think it has several very sharp insights.
-
-<p style="page-break-after: always;"></p>
-
-# Table of Contents
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=2 orderedList=false} -->
-
-<!-- code_chunk_output -->
-
-- [Software Maintainability Cheatsheet](#software-maintainability-cheatsheet)
-- [Software](#software)
-  - [Shipping Software](#shipping-software)
-  - [Software Assets](#software-assets)
-  - [Test Software](#test-software)
-  - [Playground Software](#playground-software)
-- [Quality](#quality)
-  - [Maintainability](#maintainability)
-  - [Testability](#testability)
-  - [Usability](#usability)
-  - [Readability](#readability)
-  - [Reliability](#reliability)
-  - [Reusability](#reusability)
-- [Foundation](#foundation)
-  - [The Joel Test](#the-joel-test)
-  - [TOP 25](#top-25)
-  - [List of Code Smells](#list-of-code-smells)
-- [Table of Contents](#table-of-contents)
-
-<!-- /code_chunk_output -->
