@@ -66,7 +66,7 @@ improvement. I have witnessed the use of many tools and policy, but the
 failure of projects were still almost always present. It must be evaluated
 if those tools and policy actually improving the quality. This is apparently
 often not the case.
-I identify 6 quality categories here, which need each a different treatment. 
+I identify 6 quality categories here, each of which needs dedicated treatment. 
 And, the quality of any category depends on the quality of each other category.
 That's why the dependency lines in the diagram are from each category to any
 other category.
@@ -118,7 +118,7 @@ that brings everything down, here is an _upward_ spiral.
 This is a walk on a tight rope. 
 
 #### Runtime Architecture
-If you use for instance C++ and cmake, you have two big areas to care about: The structure of your function calls, classes, dependencies, and so on. What the software _is doing_. Let's call this your __runtime architecture__. Here, for example, a huge violation in the Dave B. Stewart ( we come to that later )  identified typical error "one big loop".
+If you use for instance C++ and cmake, you have two big areas to care about: The structure of your function calls, classes, dependencies, and so on. What the software _is doing_. Let's call this your __runtime architecture__. Here, for example, the Dave B. Stewart identified typical error "one big loop" (see TOP 25 section below) can be found.
 
 #### Tooling Architecture
 The organisation of your files, folders, libraries and so on, in your repository, is another kind of architecture, which has not so much to do with what the software _is doing_. It is the organisation of the file system, basically. But that's a strong simplification. Let's call it __tooling architecture__. 
@@ -157,7 +157,7 @@ Test software can provide added value:
 - Force developer to think about the user experience of their software.
 - Give solid documentation by example.
 - Makes refactoring more safe.
-- Safeguards our Business.
+- Safeguards our business.
 
 _Quality standard and added value of test software reduces R&D cost._
 
@@ -169,14 +169,11 @@ automated testing. A test that can't be run is a test that is ... not there ... 
 But regarding the details of "how and when to test", it gets controversial. We have the
 extreme "Three rules of TDD", and "Each test should test only one thing". And one
 phenomenon I find particularly questionable, is stating "we need 80% coverage".
-I personally think it is much better to go for 100% coverage, no matter how.
-A lot of tests makes refactoring also more difficult, since tests also have to go along
-with a refactoring.
+I personally think it is much better to go for 100% coverage, no matter how. The dogma "each test should test only one thing" can lead to an excessive number of tests, making refactoring more difficult. A pragmatic approach allows tests to cover multiple aspects when appropriate, achieving full coverage without unnecessary test proliferation.
 
 ### Measure
 - How much do you cover with tests ?
-- How much of your tests are automated ?
-- How about the Maintainability, Usability, Reliability, 
+- How much of your tests are automated ? 
 
 
 
@@ -204,7 +201,7 @@ Refill the water tank.
 [ABORT] [INSTRUCTIONS]
 ```
 
-In the end, it is a matter of taste.
+While aesthetics play a role, usability is ultimately measured by how quickly and effectively users can accomplish their tasks and recover from errors.
 
 ## Readability
 
