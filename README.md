@@ -1,64 +1,131 @@
 
 
 # Software Maintainability Cheatsheet
+_An incomplete yet solid starting point to organize the endeavour to get it right._
+
 ![overview](build/overview.jpg)
 
 <p style="page-break-after: always;"></p>
 
 # Software
+Here is a brief overview of software for differentn purposes.
+There is the observeation that certain software, for example, test
+software, are not considered to be valuable, and therefore not being
+treted with the quality measures that is employed for the shipping
+software. This is one main reasond why software becomes less maintainable.
+That's why I recomment to treat any software with the same "ceaftsmanship",
+which is by the way unfortunately a term that is pretty much subject to
+interpretation.
 
 ## Shipping Software
-The cost / time / quality - triangle of your sellable software product
-is determined by the _maintainability_ of your software.
-Keeping maintainability and feature production are two different
-aspects of the development activity.
+The development cost and time, and the quality or your product is the
+(classic) Management triangle of your sellable software product.
+ANd it depends on the _maintainability_ of your software.
+Keeping maintainability and implementing behaviour are the two main things
+that are programmed, and they are very different. Both are important. If
+maintainability falls short, implementing behaviour needs more and more 
+cost and time, which is not available at some point, and then the quality
+goes down because things must be rushed to keep up the schedule.
+This is how the golden triangle of management fails.
  
 ## Software Assets
-_Any of your libraries, framworks or whatever software that is reusable, reduce R&D cost._
-Removed software is removed money.
+Any of your libraries, framworks or any of your software that is reusable,
+becomes an asset and reduce R&D cost, because you can re-use it instead of
+programming is again. But if you have assets that make your life difficult,
+you better work on this.
 
 ## Test Software
-- The amount of test software is proportional to test automation.
-- _Test automation reduce R&D cost_
-- There are many free nice tools available
-  for example gtest or catch2 for c++, robot framework for integration testing,
-  AHK2 for gui test automation, ...
-- Caveat: I disagree to the promotion of "80% coverage"- everything must be tested after all.
+The amount of test software you have is proportional to test automation.
+Test automation reduce development cost in many ways: It makes is more safe,
+more predicatble, and so on.
+There are many free nice tools available, for example gtest or catch2 for c++,
+robot framework for integration testing, AHK2 for gui test automation, ...
+But there are also somme problems with test software. Claiming "80% is enough",
+for example, has no rational or scientifig ground. If you don't test everything,
+you are in danger to have an error late after your delivered a lot, and it can
+become very expensive to fix that. Another problem is that the development of
+test code has the tendency to be rushed ro badly traeted. And that makes you
+lose many benefits of test software: It can be a solid documentation source, it
+can drive a good architecture with testability in mind, and much more.
 
 ## Playground Software
-- Creeativity is driven by experiments
-- Experimental software is the least organized
+Programmers program sometimes things to make experiments, test something, and
+try new ideas, or make some debug helpers. This is usually the software which
+is the least organized. Worse than unit tests. But it has value. 
+It carries ideas, information, data, that might be valuable in the future,
+or might be needed again later.
+
+
 
 <p style="page-break-after: always;"></p>
 
 # Quality
-Measuring quality is the basis of understanding the role of R&D in regard to that and helps to understand the order of importance to launch the right programs for quality improvement.
-
-Furthermore, the quality points mentioned here all depend on eacht other.
+Measuring quality is the basis for understanding the order of importance
+and to launch the right programs adn have the suitable policy for quality
+improvement. I have witnessed the use of many tools and policy, but the
+failure of projects were still almost always present. It must be evaluated
+if those tools and policy actually imporving the quality. This is apparently
+often not the case.
+I identiy 6 quality categories here, which needs each a different treatment. 
+And, the quality of any category depends on the quality of each other category.
+That's why the dependency lines i the diagram are from each coategory to any
+other category.
+For each of these categories i give a rationale about it, why it is there 
+why it is important, and how to get it right, and what are the consequence of
+not getting it right. I also briefly discuss the measurement of each
+quality category.
 
 ## Maintainability
 
 ### Rationale
+There is the observation that over time the development of softwar slows down
+drastically. ( see Clean Code, introduction ).
+So this is something measured. And it is really bad to have software that can't be
+maintained ( fix bugs, program new features, clean it up).
+
+#### Refactoring
+There is this activity called "Refactoring" That strange word simply means you
+change the software, but the behaviour should _not_ change at all.
+You do it to make the software more maintainable.
+
 Refactoring is mandatory to keep maintainability up. It is almost a natural
 process, that the maintainability of software deteriorates over time.
 You need high test depth and coverage to make that safe.
 
-But there are barriers:
-- Management drop it, disempowering developers.
-- Feature driven CI/CD-Micromenagement makes it "a thing", i.e. it can't
-  be as in Clean Code "The boy scout rule" as something that happens
-  "naturally" all the time. Even variable renaming get's rejected.
+Two terrible problems here:
 
-_Keeping refactoring up reduce R&D cost._
+1) If management drop refactoring, abandoning it as "technical dept", that
+disempowers developers. It makes sense as manager to do so, since otherwise
+the project economy doesn't work. It is understandable.
+The problem _behind_ this disempowerment is the decline of trust, because
+developers fail in being on schedule. And this is because the developers
+already failed to do it right. This is another downward spiral or death trap.
+
+2) Scrum or any feature driven workflow, like CI/CD, or the use of jura, put
+refactoring into work packages. It becomes "a thing". This creates a barrier
+towards "natural" programming behaviour of "keeping the camp ground cleaner
+than found", the so called Boy Scout Rule. Even simple variable renaming is
+not possible any more, i have seen it. This makes developers to unlearn
+craftsmanship ! They get the habit of NOT doing refactoring. It makes them
+tired. It all becomes a dark sad cloud of "technical dept". See the famous
+stack overflow blog, "Stop saying techical dept" for more on it. It is yet
+Another downward spiral or death trap.
+
+We have an important cycle here: Refactoring improves maintainability,
+and maintainability improves refactoring. So, instead of the downward spiral
+that brings everything down, here is an _upward_ spiral.
+
+This is a walk on a tight rope. 
 
 #### Runtime Architecture
-If you use C++ and cmake, you have two big areas to care about: The structure of your source code, like what classes do you have and so on. Let's call this your __runtime architecture__.
+If you use for instance C++ and cmake, you have two big areas to care about: The structure of your function calls, classes, dependencies, and so on. What the software _is doing_. Let's call this your __runtime architecture__. Here, for example, a huge violationi it the Dave B. Steward ( we come to that later )  identified typical error "one big loop".
 
 #### Tooling Architecture
-The organisation of your files, folders, libraries and so on, in your repository, is another kind of architecture, let's call it __tooling architecture__. 
-Both need maintainance, especially for cmake, and if you have many buld options and different target plattforms. This part is maybe much easier if you program in rust, but you have it anyway. Even if you go for something like Cube Ide, which offers you something by making a lot of it automatic. But you still have to manually fiddle a lot of details, like include paths, and so on.
+The organisation of your files, folders, libraries and so on, in your repository, is another kind of architecture, which has not so much to do with what the software _is doing_. It is the organisation of the file system, basically. But that's a strong simplification. let's call it __tooling architecture__. 
 
-### Measurement
+Both runtime architecture as well as tooling architexture need maintainance and have quality, or the absence thereof. Especially for cmake, if you have many buld options and different target plattforms and many libraries aind different ways to bind them, it can become pretty messy. This part is maybe much easier if you program in rust, or use an ide which handels it for you, or you use QT for example and don't need anything else. But you still have to manually fiddle at least some details, like include paths management, and so on.
+
+### Measure
 Compare the logic complexity of a feature to the amount of work it needs to implement it:
 
 Logic complexity: 
@@ -71,9 +138,9 @@ Implementation complexity:
 - How many build steps ?
 - How much "bouncing" ? (e.g. rejection of pull requests )
 - How much additional work has to be done, e.g. documentation is extra 
-    (confluence vs. doxygen)
+    (e.g. confluence vs. doxygen)
 
-_Keeping complexity low reduce R&D cost._
+Keeping complexity low reduce R&D cost.
 
 <p style="page-break-after: always;"></p>
 
@@ -94,26 +161,36 @@ Test software can provide extra added Value:
 
 _Quality standard and added value of test software reduce R&D cost._
 
+#### Automation
+The more test automation you have, the better. Any manual test is subject to human failure,
+and is expensive, and cant be repeated easily. Manual testing is way more expensive than
+automated testing. A test that can't be run is a test that is ... not there ... somehow.
+
+But regarding the details of "how and when to test", it gets controversal. we have the
+extreme "Three rules of TDD", and "Each test should test only one thing". And one
+phenomenon I find particularly quesionable, is stating "we need 80% coverage".
+I personally think it is much better to go for 100% coverage, no matther how.
+A lot of tests makes refactoring also more difficult, since tests also have to go along
+with a refactoring.
+
 ### Measure
 - How much do you cover with tests ?
 - How much of your tests are automated ?
 - How about the Maintainability, Usability, Reliability, 
 
-## Readability
 
-### Rationale
-To make software readable, you must performe code reviews. Only another person can tell if your software is readable, because your blind spot is that
-"you understand it", no matter what you write.
-__Code reviews must aim for readability.__
-
-### Measure
-- Have a look at the famous WTF/Minute image.
-- How much do you jump from one file to another when you read the code ?
-- Does your Diagrams fit a visible area ?
 
 ## Usability
 ### Rationale
-__Usability is what your customer pays for.__
+The usability goes down when the management decide to drop features,
+due to being behind schedule. And that is either mismanagemend ( wrong
+time estimation ) or the downward spirals of the other quality areas.
+This is how usability depend on the other quality areas.
+
+#### Customer
+If the customer can use it efficiently, that makes him happy.
+This is prone to be different to what _you_ might think is usable.
+Usability is what your customer _pays_ for.
 
 ### Measure
 Compare these error messages:
@@ -126,6 +203,35 @@ Operation Halted due to Maintenance Requirement.
 Refill the water tank.
 [ABORT] [INSTRUCTIONS]
 ```
+
+In the end, it is a matter of taste.
+
+## Readability
+
+### Rationale
+Unreadable code makes someone who has to work with it slow. This is expensive.
+But is is highly controversal to say "this code is readable" or "this code is
+not readable". It is a difficult and complex field, but most developers agree
+that good naming is helpful.
+
+#### Code Review
+To keep it simple, code reviews should be used to at least have a second opinion
+on that. It is to trick the "blind spot" everyone has towards the own failure.
+
+To make software readable, you must performe code reviews. Only another person can tell if your software is readable, because your blind spot is that "you understand it", no matter what you write.
+
+But this should never be an act of criticism. IBM once stated, that for code review, compassion is very important.
+
+### Measure
+- Have a look at the famous WTF/Minute image i Clean Code. Some people find it ridiculous.
+- How much do you have to jump from one file to another and scroll left and right and up and
+  down, when you read the code ?
+- Does your Diagrams fit into a visible area ?
+- Do you feel like having a headache when you read the code ?
+- Do you need pen and paper and make drawings to understand it ?
+- Do you have to ask someone else frequently for explaiations ?
+- Do you get lost ?
+- ...
 
 ## Reliability
 
@@ -148,6 +254,16 @@ There are a lot of questionable opinions regarding reliability.
 
 My proposal: __Go for ZERO Bugs.__
 
+#### Methodology
+
+Testing Code Reviews, CI/CD QA, MISRA, SonarQube, SCRUM, dafety concepts, and so on,
+are tools to get the software free of bugs and behave reliable.
+
+A  problem is, that those tools can't guarantee that your software is reliable. THey might make
+it worse (  e.g. SonarQube false positives ).
+
+This is how your methodology influence reliability.
+
 ### Measure
 - How long is your bug list over time ?
 - It the length of your bug list increasing or decreasing ?
@@ -157,7 +273,10 @@ My proposal: __Go for ZERO Bugs.__
 ### Rationale
 If you can re-use a piece of software that cuts the R&D cost in half ( ok, exaggerated, but you get the point ).
 
-_Reusability reduce your R&D cost._
+Reusability reduce your R&D cost.
+
+#### Architecture
+Besides all the other quality points that influence the Reusability, the architecture is particularly a point. For example, if you have everything lin a library, that might be transported to another project. If you have, on the other hand, everything code inside your functions, it is more difficult to extract. For example, you may have a collection of helpers, mathematical functions, whatever.
 
 ### Measure
 - How many times is your library/framework/module/... used ?
@@ -225,8 +344,8 @@ I think is has several very sharp insights.
 - [Quality](#quality)
   - [Maintainability](#maintainability)
   - [Testability](#testability)
-  - [Readability](#readability)
   - [Usability](#usability)
+  - [Readability](#readability)
   - [Reliability](#reliability)
   - [Reusability](#reusability)
 - [Foundation](#foundation)
