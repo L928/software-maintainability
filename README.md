@@ -1,7 +1,7 @@
 
 
 # Software Maintainability Cheatsheet
-_An incomplete yet solid starting point to organize the endeavour to get it right._
+_An incomplete, not carved in stone, yet solid starting point to organize the endeavour to get it right._
 
 ![overview](build/overview.jpg)
 
